@@ -1,0 +1,56 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}
+ Checkout
+{% endblock %}
+{% block css %}
+<link  rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+{% block content %}
+<div class="container">
+    <p class="h1" align="center">Checkout</p>
+</div>
+<div class="container">
+  <div class="row">
+      <div class="col-2">
+      </div>
+    <div class="col-3">
+     <div >
+      <h3 align="center">Your order</h3>
+       <ol adding-left="20rem" class="list-group list-group-numbered" p>
+       {% for item in cart %}
+          <li padding-left="20rem" class="list-group-item d-flex justify-content-between align-items-start" >
+          <div class="ms-2 me-auto">
+            <div class="fw-bold">{{ item.product.name }}</div>
+            </div>
+          <span class="badge bg-black rounded-pill">{{ item.quantity }}</span>
+          </li>
+       {% endfor %}
+       </ol>
+       <p align="right">Total: <b>{{ cart.get_total_price }}$</b></p>
+     </div>
+    </div>
+      <div class="col-2">
+      </div>
+    <div class="col-4">
+       <h3 align="center">Your info</h3>
+       <form action="." method="post" id="success_data">
+           <div class="form-group">
+                {{ form.as_p }}
+                {% csrf_token %}
+           </div>
+       </form>
+    </div>
+    <div class="col-2">
+    </div>
+  </div>
+  <div class="col" align="center">
+     <form action="{% url 'shop:product_list' %}">
+        <button class="btn btn-outline-dark btn-lg flex-shrink-0" type="submit" form="success_data">
+           <img src="https://img.icons8.com/material/30/000000/inspection--v1.png"/>
+           Place order
+        </button>
+     </form>
+  </div>
+</div>
+{% endblock %}

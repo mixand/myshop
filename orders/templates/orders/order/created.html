@@ -1,0 +1,23 @@
+{% extends "shop/base.html" %}
+{% load static %}
+
+{% block title %}
+Thanks for the order!
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <p class="h1" align="center">Thanks for the order!</p><br>
+    <p class="h2" align="center">Your order is {{order_id}}</p><br>
+    <div class="col float-center text-center">
+        <form action="{% url 'shop:product_list' %}">
+            <button class="btn btn-outline-dark btn-lg flex-shrink-0" type="submit">
+                <img src="https://img.icons8.com/ios-glyphs/30/000000/left.png"/>
+                Continue shopping
+            </button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

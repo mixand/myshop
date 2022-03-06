@@ -1,0 +1,61 @@
+{% extends "shop/base.html" %}
+{% load static %}
+
+{% block title %}
+  {% if search_product %}
+    Search Result
+  {% elif category %}{{ category.name }}
+  {% else %}All Categories
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <p class="h1" align="center">
+        {% if search_product %}
+            Search Result: "{{search_product}}"
+        {% elif category %} {{ category.name }}
+        {% else %}All Categories
+        {% endif %}
+    </p>
+</div>
+
+<div class="container px-4 px-lg-5 mt-5">
+    <div id="main" class="product-list">
+       {% if products%}
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-left">
+            {% for product in products %}
+                  <div class="col mb-5">
+                      <div class="card h-100">
+                              <!-- Product image-->
+                                <img class="card-img-top"
+                                     src="{% if product.image %}{{ product.image.url }}
+                                          {% else %}
+                                          {% static 'img/no_image.png' %}
+                                          {% endif %}" alt="..." />
+                              <!-- Product details-->
+                                        <div class="card-body p-4">
+                                            <div class="text-center">
+                                                <!-- Product name-->
+                                                <h5 class="fw-bolder">{{ product.name }}</h5>
+                                                <!-- Product price-->
+                                                {{ product.price }}$
+                                            </div>
+                                        </div>
+                                        <!-- Product actions-->
+                                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{ product.get_absolute_url }}">View detail</a></div>
+                                        </div>
+                      </div>
+                  </div>
+            {% endfor %}
+        </div>
+        {% else %}
+            <div class="product-list">
+            <h3 align="center">EMPTY LIST</h3>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
