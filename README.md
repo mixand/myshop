@@ -1,4 +1,5 @@
 # My Shop
+This is an online store.  
 There is a list of all products.  
 Products are divided into categories. You can display a list of products of each category separately.  
 There is a search by product name.  
