@@ -11,12 +11,8 @@ At the end, the order is assigned a number and sent to the store administration.
 The site can be viewed and used in test mode on the service <b>heroku.com</b>
 [⚡<b>LINK</b>⚡](http://my-shop-150387.herokuapp.com/)    
   
-The site can be deployed via Docker.
-1. Install Docker on your computer.
-2. Go to the "docker" branch.
-3. Download "myshop" to your computer.
-4. In the terminal, enter "docker build -t myshop ."
-5. In the browser, enter "127.0.0.1:8000"
-6. We use the site)
+The site can be deployed via <b>Docker</b>.
+To do this, you need to switch to the "docker" branch. [⚡<b>LINK</b>⚡](https://github.com/mixand/myshop/tree/docker)
+
   
 ps This is my first project, please do not scold me for any of my decisions and for mistakes.
